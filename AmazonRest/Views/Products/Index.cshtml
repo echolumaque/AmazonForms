@@ -1,0 +1,105 @@
+﻿@model IEnumerable<AmazonRest.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.product_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shipping_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stocks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.features)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.series)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.item_weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.item_model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prod_dimen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.item_dimen)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.shipping_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stocks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.features)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.series)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.item_weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.item_model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prod_dimen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.item_dimen)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
