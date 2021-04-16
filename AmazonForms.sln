@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazonForms", "AmazonForms\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonForms.Android", "AmazonForms.Android\AmazonForms.Android.csproj", "{B34D62E5-878F-4EC1-AACE-B4B848A45F02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonRest", "AmazonRest\AmazonRest.csproj", "{2A656E96-82B7-4136-B470-B029B14B18AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonRest", "AmazonRest\AmazonRest.csproj", "{FC4D80CF-9BB9-4DC3-99C1-F1D20E664C68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonCMS", "AmazonCMS\AmazonCMS.csproj", "{246ED307-69CA-4DB1-9AFD-2FFDBDD456E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +27,14 @@ Global
 		{B34D62E5-878F-4EC1-AACE-B4B848A45F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B34D62E5-878F-4EC1-AACE-B4B848A45F02}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B34D62E5-878F-4EC1-AACE-B4B848A45F02}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{2A656E96-82B7-4136-B470-B029B14B18AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A656E96-82B7-4136-B470-B029B14B18AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A656E96-82B7-4136-B470-B029B14B18AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A656E96-82B7-4136-B470-B029B14B18AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC4D80CF-9BB9-4DC3-99C1-F1D20E664C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4D80CF-9BB9-4DC3-99C1-F1D20E664C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4D80CF-9BB9-4DC3-99C1-F1D20E664C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC4D80CF-9BB9-4DC3-99C1-F1D20E664C68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{246ED307-69CA-4DB1-9AFD-2FFDBDD456E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{246ED307-69CA-4DB1-9AFD-2FFDBDD456E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{246ED307-69CA-4DB1-9AFD-2FFDBDD456E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{246ED307-69CA-4DB1-9AFD-2FFDBDD456E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
