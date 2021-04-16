@@ -12,19 +12,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.product_name)
+            @Html.DisplayNameFor(model => model.prod_name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.rating)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.thumbanil)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.shipping_price)
+            @Html.DisplayNameFor(model => model.shipping_fee)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.stocks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brand)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.description)
@@ -33,19 +39,16 @@
             @Html.DisplayNameFor(model => model.features)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.brand)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.series)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.item_weight)
+            @Html.DisplayNameFor(model => model.model_number)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.item_model)
+            @Html.DisplayNameFor(model => model.weight)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.prod_dimen)
+            @Html.DisplayNameFor(model => model.product_dimen)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.item_dimen)
@@ -56,19 +59,25 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.product_name)
+            @Html.DisplayFor(modelItem => item.prod_name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.rating)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.thumbanil)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.shipping_price)
+            @Html.DisplayFor(modelItem => item.shipping_fee)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.stocks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.brand)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.description)
@@ -77,19 +86,16 @@
             @Html.DisplayFor(modelItem => item.features)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.brand)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.series)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.item_weight)
+            @Html.DisplayFor(modelItem => item.model_number)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.item_model)
+            @Html.DisplayFor(modelItem => item.weight)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.prod_dimen)
+            @Html.DisplayFor(modelItem => item.product_dimen)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.item_dimen)

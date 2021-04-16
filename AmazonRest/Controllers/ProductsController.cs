@@ -19,6 +19,9 @@ namespace AmazonRest.Controllers
         {
             return View(db.Products.ToList());
         }
+        
+        [HttpGet]
+        public int LastID() => db.Products.ToList().Last().Id + 1;
 
         // GET: Products/Details/5
         public ActionResult Details(int? id)
@@ -45,16 +48,19 @@ namespace AmazonRest.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,product_name,rating,price,shipping_price,stocks,description,features,brand,series,item_weight,item_model,prod_dimen,item_dimen")] Product product)
+        //[ValidateAntiForgeryToken]
+        public int Create([Bind(Include = "Id,prod_name,rating,thumbanil,price,shipping_fee,stocks,brand,description,features,series,model_number,weight,product_dimen,item_dimen")] Product product)
         {
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                RedirectToAction("Index");
+                return 1;
             }
 
-            return View(product);
+            View(product);
+            return 0;
         }
 
         // GET: Products/Edit/5
@@ -77,7 +83,7 @@ namespace AmazonRest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,product_name,rating,price,shipping_price,stocks,description,features,brand,series,item_weight,item_model,prod_dimen,item_dimen")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,prod_name,rating,thumbanil,price,shipping_fee,stocks,brand,description,features,series,model_number,weight,product_dimen,item_dimen")] Product product)
         {
             if (ModelState.IsValid)
             {

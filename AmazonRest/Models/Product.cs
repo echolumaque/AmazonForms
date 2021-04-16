@@ -11,22 +11,27 @@ namespace AmazonRest.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Product
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string product_name { get; set; }
+        public string prod_name { get; set; }
         public Nullable<int> rating { get; set; }
+        public string thumbanil { get; set; }
         public Nullable<decimal> price { get; set; }
-        public Nullable<decimal> shipping_price { get; set; }
+        public Nullable<decimal> shipping_fee { get; set; }
         public Nullable<int> stocks { get; set; }
+        public string brand { get; set; }
         public string description { get; set; }
         public string features { get; set; }
-        public string brand { get; set; }
         public string series { get; set; }
-        public string item_weight { get; set; }
-        public string item_model { get; set; }
-        public string prod_dimen { get; set; }
+        public string model_number { get; set; }
+        public string weight { get; set; }
+        public string product_dimen { get; set; }
         public string item_dimen { get; set; }
     }
 }
