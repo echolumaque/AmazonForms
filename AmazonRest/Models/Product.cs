@@ -11,14 +11,9 @@ namespace AmazonRest.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Product
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
         public string prod_name { get; set; }
         public Nullable<int> rating { get; set; }
         public string thumbanil { get; set; }
@@ -33,5 +28,6 @@ namespace AmazonRest.Models
         public string weight { get; set; }
         public string product_dimen { get; set; }
         public string item_dimen { get; set; }
+        public int Id { get; set; }
     }
 }
