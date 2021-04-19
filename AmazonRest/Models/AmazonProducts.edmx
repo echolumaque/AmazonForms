@@ -4,12 +4,11 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AmazonDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AmazonProductsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Products">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="prod_name" Type="nvarchar(max)" />
           <Property Name="rating" Type="int" />
           <Property Name="thumbanil" Type="nvarchar(max)" />
@@ -24,20 +23,20 @@
           <Property Name="weight" Type="nvarchar(max)" />
           <Property Name="product_dimen" Type="nvarchar(max)" />
           <Property Name="item_dimen" Type="nvarchar(max)" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="AmazonDatabaseModelStoreContainer">
+        <EntityContainer Name="AmazonProductsModelStoreContainer">
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="AmazonDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="AmazonProductsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="prod_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="rating" Type="Int32" />
           <Property Name="thumbanil" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -52,8 +51,9 @@
           <Property Name="weight" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="product_dimen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="item_dimen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
-        <EntityContainer Name="AmazonDatabaseEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AmazonProductsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Products" EntityType="Self.Product" />
         </EntityContainer>
       </Schema>
@@ -61,11 +61,10 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AmazonDatabaseModelStoreContainer" CdmEntityContainer="AmazonDatabaseEntities">
+        <EntityContainerMapping StorageEntityContainer="AmazonProductsModelStoreContainer" CdmEntityContainer="AmazonProductsEntities">
           <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="AmazonDatabaseModel.Product">
+            <EntityTypeMapping TypeName="AmazonProductsModel.Product">
               <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="prod_name" ColumnName="prod_name" />
                 <ScalarProperty Name="rating" ColumnName="rating" />
                 <ScalarProperty Name="thumbanil" ColumnName="thumbanil" />
@@ -80,6 +79,7 @@
                 <ScalarProperty Name="weight" ColumnName="weight" />
                 <ScalarProperty Name="product_dimen" ColumnName="product_dimen" />
                 <ScalarProperty Name="item_dimen" ColumnName="item_dimen" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

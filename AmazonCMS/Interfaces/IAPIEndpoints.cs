@@ -10,7 +10,7 @@ namespace AmazonCMS.Interfaces
 {
     public interface IAPIEndpoints
     {
-        [Post("/Products/Create")]
+        [Post("/Products/AddProduct")]
         Task AddNewProduct(ProductsModel product);
         [Get("/Products/LastID")]
         Task<int> GetAllProducts();
