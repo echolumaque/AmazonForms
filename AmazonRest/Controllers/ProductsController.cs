@@ -11,7 +11,7 @@ namespace AmazonRest.Controllers
         private readonly AmazonProductsEntities db = new AmazonProductsEntities();
 
         //create
-        [Compress]
+        //[Compress]
         [HttpPost]
         public async Task AddProduct([Bind(Include = "prod_name,rating,thumbanil,price,shipping_fee,stocks,brand,description,features,series,model_number,weight,product_dimen,item_dimen,Id")] Product product)
         {
