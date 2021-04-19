@@ -121,15 +121,27 @@
       <DependentUpon>AmazonProducts.edmx</DependentUpon>
       <LastGenOutput>AmazonProducts.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\AmazonUsers.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AmazonUsers.edmx</DependentUpon>
+      <LastGenOutput>AmazonUsers.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AmazonUsers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AmazonUsers.edmx</DependentUpon>
+      <LastGenOutput>AmazonUsers.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CompressAttribute.cs" />
+    <Compile Include="Helpers\EncryptDecrypt.cs" />
     <Compile Include="Models\AmazonProducts.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,8 +157,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AmazonProducts.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AmazonUsers.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmazonUsers.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AmazonUsers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmazonUsers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AmazonUsers.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmazonUsers.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Product.cs">
       <DependentUpon>AmazonProducts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>AmazonUsers.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -158,6 +188,13 @@
     </EntityDeploy>
     <Content Include="Models\AmazonProducts.edmx.diagram">
       <DependentUpon>AmazonProducts.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\AmazonUsers.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AmazonUsers.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AmazonUsers.edmx.diagram">
+      <DependentUpon>AmazonUsers.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />

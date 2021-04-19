@@ -20,12 +20,12 @@ namespace AmazonRest.Helpers
             if (acceptEncoding.Contains("GZIP"))
             {
                 response.AppendHeader("Content-encoding", "gzip");
-                response.Filter = new GZipStream(response.Filter, CompressionMode.Compress);
+                response.Filter = new GZipStream(response.Filter, CompressionMode.Compress, CompressionLevel.BestCompression);
             }
             else if (acceptEncoding.Contains("DEFLATE"))
             {
                 response.AppendHeader("Content-encoding", "deflate");
-                response.Filter = new DeflateStream(response.Filter, CompressionMode.Compress);
+                response.Filter = new DeflateStream(response.Filter, CompressionMode.Compress, CompressionLevel.BestCompression);
             }
         }
 
