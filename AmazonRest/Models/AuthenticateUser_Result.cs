@@ -10,15 +10,11 @@
 namespace AmazonRest.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class User
+    public partial class AuthenticateUser_Result
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Password { get; set; }
-        public string EmailOrPhone { get; set; }
         public string Address { get; set; }
-        public string PhoneNumber { get; set; }
     }
 }

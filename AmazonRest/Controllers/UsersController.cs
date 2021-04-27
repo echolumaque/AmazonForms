@@ -11,7 +11,6 @@ namespace AmazonRest.Controllers
         private readonly AmazonUsersEntities users = new AmazonUsersEntities();
 
         [HttpPost]
-        [Compress]
         [Route("users/register")]
         public async Task<string> Register([Bind(Include = "Id, Name, Password, EmailOrPhone")] User user)
         {
@@ -31,19 +30,14 @@ namespace AmazonRest.Controllers
             return "registered";
         }
 
-        
-
-        public bool Login([Bind(Include = "EmailOrPhone, Password")] User user)
+        [HttpPost]
+        public JsonResult Login([Bind(Include = "EmailOrPhone, Password")] User user)
         {
-            var userId = users.AuthenticateUser(user.EmailOrPhone, EncryptDecrypt.EncryptPassword(user.Password)).FirstOrDefault();
-
-            switch (userId.Value)
-            {
-                case -1://incorrect
-                    return false;
-                default://correct
-                    return true;
-            }
+            var userInfo =  users.AuthenticateUser(user.EmailOrPhone, EncryptDecrypt.EncryptPassword(user.Password)).FirstOrDefault();
+            return Json(userInfo, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public void EditUser(int? id, string name, string address) => users.EditCurrentUser(id, name, address);
     }
 }

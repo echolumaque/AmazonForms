@@ -10,15 +10,15 @@
 namespace AmazonRest.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class User
+    public partial class QueryUsersCarts_Result
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Password { get; set; }
-        public string EmailOrPhone { get; set; }
-        public string Address { get; set; }
-        public string PhoneNumber { get; set; }
+        public int OrderID { get; set; }
+        public string prod_name { get; set; }
+        public Nullable<decimal> price { get; set; }
+        public int ProductID { get; set; }
+        public string thumbanil { get; set; }
     }
 }
