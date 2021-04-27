@@ -29,7 +29,7 @@ namespace AmazonRest.Models
     
         public virtual DbSet<User> Users { get; set; }
     
-        public virtual ObjectResult<Nullable<int>> AuthenticateUser(string emailOrPhone, string password)
+        public virtual ObjectResult<AuthenticateUser_Result> AuthenticateUser(string emailOrPhone, string password)
         {
             var emailOrPhoneParameter = emailOrPhone != null ?
                 new ObjectParameter("EmailOrPhone", emailOrPhone) :
@@ -39,20 +39,24 @@ namespace AmazonRest.Models
                 new ObjectParameter("Password", password) :
                 new ObjectParameter("Password", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("AuthenticateUser", emailOrPhoneParameter, passwordParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AuthenticateUser_Result>("AuthenticateUser", emailOrPhoneParameter, passwordParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> Authenticate_User(string emailOrPhone, string password)
+        public virtual int EditCurrentUser(Nullable<int> userID, string name, string address)
         {
-            var emailOrPhoneParameter = emailOrPhone != null ?
-                new ObjectParameter("EmailOrPhone", emailOrPhone) :
-                new ObjectParameter("EmailOrPhone", typeof(string));
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
     
-            var passwordParameter = password != null ?
-                new ObjectParameter("Password", password) :
-                new ObjectParameter("Password", typeof(string));
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Authenticate_User", emailOrPhoneParameter, passwordParameter);
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditCurrentUser", userIDParameter, nameParameter, addressParameter);
         }
     }
 }

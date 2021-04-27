@@ -131,11 +131,22 @@
       <DependentUpon>AmazonUsers.edmx</DependentUpon>
       <LastGenOutput>AmazonUsers.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\AmazonUsersCarts.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AmazonUsersCarts.edmx</DependentUpon>
+      <LastGenOutput>AmazonUsersCarts.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AmazonUsersCarts.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AmazonUsersCarts.edmx</DependentUpon>
+      <LastGenOutput>AmazonUsersCarts.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\UsersCartsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -172,11 +183,38 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AmazonUsers.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AmazonUsersCarts.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmazonUsersCarts.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AmazonUsersCarts.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmazonUsersCarts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AmazonUsersCarts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmazonUsersCarts.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuthenticateUser_Result.cs">
+      <DependentUpon>AmazonUsers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Product.cs">
       <DependentUpon>AmazonProducts.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\QueryUsersCarts_Result.cs">
+      <DependentUpon>AmazonUsersCarts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShowProductDetails_Result.cs">
+      <DependentUpon>AmazonUsersCarts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>AmazonUsers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsersCart.cs">
+      <DependentUpon>AmazonUsersCarts.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -196,6 +234,13 @@
     <Content Include="Models\AmazonUsers.edmx.diagram">
       <DependentUpon>AmazonUsers.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\AmazonUsersCarts.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AmazonUsersCarts.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AmazonUsersCarts.edmx.diagram">
+      <DependentUpon>AmazonUsersCarts.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -204,6 +249,11 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\UsersCarts\Create.cshtml" />
+    <Content Include="Views\UsersCarts\Delete.cshtml" />
+    <Content Include="Views\UsersCarts\Details.cshtml" />
+    <Content Include="Views\UsersCarts\Edit.cshtml" />
+    <Content Include="Views\UsersCarts\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
