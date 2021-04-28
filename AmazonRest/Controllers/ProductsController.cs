@@ -8,7 +8,7 @@ namespace AmazonRest.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly AmazonProductsEntities db = new AmazonProductsEntities();
+        private readonly AmazonProducts db = new AmazonProducts();
         //used for crud internally
         //create
         //[Compress]

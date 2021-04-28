@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AmazonDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Users.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
@@ -25,13 +25,14 @@
           <Parameter Name="Name" Type="nvarchar" Mode="In" />
           <Parameter Name="Address" Type="varchar(max)" Mode="In" />
         </Function>
-        <EntityContainer Name="AmazonDatabaseModelStoreContainer">
+        <EntityContainer Name="UsersStoreContainer">
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="AmazonDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Users" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -39,13 +40,13 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="EmailOrPhone" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmailOrPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="AmazonUsersEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AmazonUsers" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="Self.User" />
-          <FunctionImport Name="AuthenticateUser" ReturnType="Collection(AmazonDatabaseModel.AuthenticateUser_Result)">
+          <FunctionImport Name="AuthenticateUser" ReturnType="Collection(Users.AuthenticateUser_Result)">
             <Parameter Name="EmailOrPhone" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
@@ -65,29 +66,29 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AmazonDatabaseModelStoreContainer" CdmEntityContainer="AmazonUsersEntities">
+        <EntityContainerMapping StorageEntityContainer="UsersStoreContainer" CdmEntityContainer="AmazonUsers">
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="AmazonDatabaseModel.User">
+            <EntityTypeMapping TypeName="Users.User">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="EmailOrPhone" ColumnName="EmailOrPhone" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmailOrPhone" ColumnName="EmailOrPhone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="AuthenticateUser" FunctionName="AmazonDatabaseModel.Store.AuthenticateUser">
+          <FunctionImportMapping FunctionImportName="AuthenticateUser" FunctionName="Users.Store.AuthenticateUser">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="AmazonDatabaseModel.AuthenticateUser_Result">
+              <ComplexTypeMapping TypeName="Users.AuthenticateUser_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="EditCurrentUser" FunctionName="AmazonDatabaseModel.Store.EditCurrentUser" />
+          <FunctionImportMapping FunctionImportName="EditCurrentUser" FunctionName="Users.Store.EditCurrentUser" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

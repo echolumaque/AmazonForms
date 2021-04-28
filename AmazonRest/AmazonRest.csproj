@@ -111,35 +111,35 @@
   <ItemGroup>
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Models\AmazonProducts.Context.tt">
+    <Content Include="Models\AmazonUser.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AmazonProducts.edmx</DependentUpon>
-      <LastGenOutput>AmazonProducts.Context.cs</LastGenOutput>
+      <DependentUpon>AmazonUser.edmx</DependentUpon>
+      <LastGenOutput>AmazonUser.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\AmazonProducts.tt">
+    <Content Include="Models\AmazonUser.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AmazonProducts.edmx</DependentUpon>
-      <LastGenOutput>AmazonProducts.cs</LastGenOutput>
+      <DependentUpon>AmazonUser.edmx</DependentUpon>
+      <LastGenOutput>AmazonUser.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\AmazonUsers.Context.tt">
+    <Content Include="Models\AnazonProductsEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AmazonUsers.edmx</DependentUpon>
-      <LastGenOutput>AmazonUsers.Context.cs</LastGenOutput>
+      <DependentUpon>AnazonProductsEntities.edmx</DependentUpon>
+      <LastGenOutput>AnazonProductsEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\AmazonUsers.tt">
+    <Content Include="Models\AnazonProductsEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AmazonUsers.edmx</DependentUpon>
-      <LastGenOutput>AmazonUsers.cs</LastGenOutput>
+      <DependentUpon>AnazonProductsEntities.edmx</DependentUpon>
+      <LastGenOutput>AnazonProductsEntities.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\AmazonUsersCarts.Context.tt">
+    <Content Include="Models\UserCart.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AmazonUsersCarts.edmx</DependentUpon>
-      <LastGenOutput>AmazonUsersCarts.Context.cs</LastGenOutput>
+      <DependentUpon>UserCart.edmx</DependentUpon>
+      <LastGenOutput>UserCart.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\AmazonUsersCarts.tt">
+    <Content Include="Models\UserCart.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AmazonUsersCarts.edmx</DependentUpon>
-      <LastGenOutput>AmazonUsersCarts.cs</LastGenOutput>
+      <DependentUpon>UserCart.edmx</DependentUpon>
+      <LastGenOutput>UserCart.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
@@ -153,93 +153,93 @@
     </Compile>
     <Compile Include="Helpers\CompressAttribute.cs" />
     <Compile Include="Helpers\EncryptDecrypt.cs" />
-    <Compile Include="Models\AmazonProducts.Context.cs">
+    <Compile Include="Models\AmazonUser.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AmazonProducts.Context.tt</DependentUpon>
+      <DependentUpon>AmazonUser.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AmazonProducts.cs">
+    <Compile Include="Models\AmazonUser.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AmazonProducts.tt</DependentUpon>
+      <DependentUpon>AmazonUser.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AmazonProducts.Designer.cs">
+    <Compile Include="Models\AmazonUser.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AmazonProducts.edmx</DependentUpon>
+      <DependentUpon>AmazonUser.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\AmazonUsers.Context.cs">
+    <Compile Include="Models\AnazonProductsEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AmazonUsers.Context.tt</DependentUpon>
+      <DependentUpon>AnazonProductsEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AmazonUsers.cs">
+    <Compile Include="Models\AnazonProductsEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AmazonUsers.tt</DependentUpon>
+      <DependentUpon>AnazonProductsEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AmazonUsers.Designer.cs">
+    <Compile Include="Models\AnazonProductsEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AmazonUsers.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AmazonUsersCarts.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AmazonUsersCarts.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AmazonUsersCarts.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AmazonUsersCarts.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AmazonUsersCarts.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AmazonUsersCarts.edmx</DependentUpon>
+      <DependentUpon>AnazonProductsEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\AuthenticateUser_Result.cs">
-      <DependentUpon>AmazonUsers.tt</DependentUpon>
+      <DependentUpon>AmazonUser.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>AmazonProducts.tt</DependentUpon>
+      <DependentUpon>AnazonProductsEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\QueryUsersCarts_Result.cs">
-      <DependentUpon>AmazonUsersCarts.tt</DependentUpon>
+      <DependentUpon>UserCart.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShowProductDetails_Result.cs">
-      <DependentUpon>AmazonUsersCarts.tt</DependentUpon>
+      <DependentUpon>UserCart.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>AmazonUsers.tt</DependentUpon>
+      <DependentUpon>AmazonUser.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserCart.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserCart.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserCart.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserCart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserCart.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserCart.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\UsersCart.cs">
-      <DependentUpon>AmazonUsersCarts.tt</DependentUpon>
+      <DependentUpon>UserCart.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\AmazonProducts.edmx">
+    <EntityDeploy Include="Models\AmazonUser.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AmazonProducts.Designer.cs</LastGenOutput>
+      <LastGenOutput>AmazonUser.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\AmazonProducts.edmx.diagram">
-      <DependentUpon>AmazonProducts.edmx</DependentUpon>
+    <Content Include="Models\AmazonUser.edmx.diagram">
+      <DependentUpon>AmazonUser.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\AmazonUsers.edmx">
+    <EntityDeploy Include="Models\UserCart.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AmazonUsers.Designer.cs</LastGenOutput>
+      <LastGenOutput>UserCart.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\AmazonUsers.edmx.diagram">
-      <DependentUpon>AmazonUsers.edmx</DependentUpon>
+    <Content Include="Models\UserCart.edmx.diagram">
+      <DependentUpon>UserCart.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\AmazonUsersCarts.edmx">
+    <EntityDeploy Include="Models\AnazonProductsEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AmazonUsersCarts.Designer.cs</LastGenOutput>
+      <LastGenOutput>AnazonProductsEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\AmazonUsersCarts.edmx.diagram">
-      <DependentUpon>AmazonUsersCarts.edmx</DependentUpon>
+    <Content Include="Models\AnazonProductsEntities.edmx.diagram">
+      <DependentUpon>AnazonProductsEntities.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
