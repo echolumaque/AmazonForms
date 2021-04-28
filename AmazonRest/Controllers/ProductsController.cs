@@ -30,9 +30,15 @@ namespace AmazonRest.Controllers
         public JsonResult AllProducts()
         {
             var response = Json(db.Products.ToList(), JsonRequestBehavior.AllowGet);
-            Add("products", response, DateTimeOffset.UtcNow.AddHours(24));
-            return GetValue("products") as JsonResult;
-        } 
+
+            if (GetValue("AllProducts") == null)
+            {
+                Add("AllProducts", response, DateTimeOffset.UtcNow.AddHours(24));
+                return GetValue("AllProducts") as JsonResult;
+            }
+            else
+                return GetValue("AllProducts") as JsonResult;
+        }
 
         [Compress]
         [HttpPost]

@@ -33,7 +33,7 @@ namespace AmazonRest.Controllers
         [HttpPost]
         public JsonResult Login([Bind(Include = "EmailOrPhone, Password")] User user)
         {
-            var userInfo =  users.AuthenticateUser(user.EmailOrPhone, EncryptDecrypt.EncryptPassword(user.Password)).FirstOrDefault();
+            var userInfo = users.AuthenticateUser(user.EmailOrPhone, EncryptDecrypt.EncryptPassword(user.Password)).FirstOrDefault();
             return Json(userInfo, JsonRequestBehavior.AllowGet);
         }
 
