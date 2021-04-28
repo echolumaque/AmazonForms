@@ -2,16 +2,22 @@
 using AmazonRest.Helpers;
 using AmazonRest.Models;
 using System.Linq;
+using System;
 
 namespace AmazonRest.Controllers
 {
-    public class UsersCartsController : Controller
+    public class UsersCartsController : BaseController
     {
         private AmazonUsersCart db = new AmazonUsersCart();
 
         [HttpGet]
         [Compress]
-        public JsonResult GetCurrentUserCart(int? id) => Json(db.QueryUsersCarts(id), JsonRequestBehavior.AllowGet);
+        public JsonResult GetCurrentUserCart(int? id)
+        {
+            var response = Json(db.QueryUsersCarts(id), JsonRequestBehavior.AllowGet);
+            Add("usercart", response, DateTimeOffset.UtcNow.AddHours(24));
+            return GetValue("usercart") as JsonResult;
+        } 
 
         [HttpGet]
         [Compress]

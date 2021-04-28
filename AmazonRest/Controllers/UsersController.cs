@@ -6,7 +6,7 @@ using AmazonRest.Models;
 
 namespace AmazonRest.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
         private readonly AmazonUsers users = new AmazonUsers();
 
