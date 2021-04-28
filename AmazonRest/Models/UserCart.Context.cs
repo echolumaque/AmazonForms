@@ -15,10 +15,10 @@ namespace AmazonRest.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class AmazonUsersCarts : DbContext
+    public partial class AmazonUsersCart : DbContext
     {
-        public AmazonUsersCarts()
-            : base("name=AmazonUsersCarts")
+        public AmazonUsersCart()
+            : base("name=AmazonUsersCart")
         {
         }
     

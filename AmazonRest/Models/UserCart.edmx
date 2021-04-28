@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UsersCarts.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AmazonUsersCarts.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="UsersCarts">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -21,13 +21,14 @@
         <Function Name="ShowProductDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProductID" Type="int" Mode="In" />
         </Function>
-        <EntityContainer Name="UsersCartsStoreContainer">
+        <EntityContainer Name="AmazonUsersCartsStoreContainer">
           <EntitySet Name="UsersCarts" EntityType="Self.UsersCarts" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="UsersCarts" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="AmazonUsersCarts" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="UsersCart">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -38,12 +39,12 @@
           <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="AmazonUsersCarts" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AmazonUsersCart" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="UsersCarts" EntityType="Self.UsersCart" />
-          <FunctionImport Name="QueryUsersCarts" ReturnType="Collection(UsersCarts.QueryUsersCarts_Result)">
-          <Parameter Name="UserID" Mode="In" Type="Int32" />
+          <FunctionImport Name="QueryUsersCarts" ReturnType="Collection(AmazonUsersCarts.QueryUsersCarts_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="ShowProductDetails" ReturnType="Collection(UsersCarts.ShowProductDetails_Result)">
+          <FunctionImport Name="ShowProductDetails" ReturnType="Collection(AmazonUsersCarts.ShowProductDetails_Result)">
             <Parameter Name="ProductID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
@@ -78,9 +79,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UsersCartsStoreContainer" CdmEntityContainer="AmazonUsersCarts">
+        <EntityContainerMapping StorageEntityContainer="AmazonUsersCartsStoreContainer" CdmEntityContainer="AmazonUsersCart">
           <EntitySetMapping Name="UsersCarts">
-            <EntityTypeMapping TypeName="UsersCarts.UsersCart">
+            <EntityTypeMapping TypeName="AmazonUsersCarts.UsersCart">
               <MappingFragment StoreEntitySet="UsersCarts">
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
@@ -90,9 +91,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="QueryUsersCarts" FunctionName="UsersCarts.Store.QueryUsersCarts">
+          <FunctionImportMapping FunctionImportName="QueryUsersCarts" FunctionName="AmazonUsersCarts.Store.QueryUsersCarts">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UsersCarts.QueryUsersCarts_Result">
+              <ComplexTypeMapping TypeName="AmazonUsersCarts.QueryUsersCarts_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -103,9 +104,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ShowProductDetails" FunctionName="UsersCarts.Store.ShowProductDetails">
+          <FunctionImportMapping FunctionImportName="ShowProductDetails" FunctionName="AmazonUsersCarts.Store.ShowProductDetails">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UsersCarts.ShowProductDetails_Result">
+              <ComplexTypeMapping TypeName="AmazonUsersCarts.ShowProductDetails_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="prod_name" ColumnName="prod_name" />
                 <ScalarProperty Name="rating" ColumnName="rating" />

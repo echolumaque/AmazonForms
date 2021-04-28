@@ -15,10 +15,10 @@ namespace AmazonRest.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class AmazonUsersEntities : DbContext
+    public partial class AmazonUsers : DbContext
     {
-        public AmazonUsersEntities()
-            : base("name=AmazonUsersEntities")
+        public AmazonUsers()
+            : base("name=AmazonUsers")
         {
         }
     

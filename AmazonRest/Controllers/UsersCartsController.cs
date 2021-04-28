@@ -7,7 +7,7 @@ namespace AmazonRest.Controllers
 {
     public class UsersCartsController : Controller
     {
-        private AmazonUsersCarts db = new AmazonUsersCarts();
+        private AmazonUsersCart db = new AmazonUsersCart();
 
         [HttpGet]
         [Compress]

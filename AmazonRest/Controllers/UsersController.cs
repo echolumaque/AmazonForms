@@ -8,7 +8,7 @@ namespace AmazonRest.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly AmazonUsersEntities users = new AmazonUsersEntities();
+        private readonly AmazonUsers users = new AmazonUsers();
 
         [HttpPost]
         [Route("users/register")]

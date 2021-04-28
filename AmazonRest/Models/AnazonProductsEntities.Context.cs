@@ -13,10 +13,10 @@ namespace AmazonRest.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AmazonProductsEntities : DbContext
+    public partial class AmazonProducts : DbContext
     {
-        public AmazonProductsEntities()
-            : base("name=AmazonProductsEntities")
+        public AmazonProducts()
+            : base("name=AmazonProducts")
         {
         }
     

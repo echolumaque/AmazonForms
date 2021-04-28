@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3e5220c8cce54b32bda8a442333b3c5a" Name="Diagram1">
-        <EntityTypeShape EntityType="AmazonProductsModel.Product" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="b762a0e0d7954a7d9421be633e9b2546" Name="Diagram1">
+        <EntityTypeShape EntityType="AmazonProductsEntities.Product" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
