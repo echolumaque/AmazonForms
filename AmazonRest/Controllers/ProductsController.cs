@@ -1,17 +1,19 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using AmazonRest.Models;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using AmazonRest.Helpers;
+using AmazonRest.Models;
 
 namespace AmazonRest.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
-        private readonly AmazonProducts db = new AmazonProducts();
         //used for crud internally
+
+        private readonly AmazonProducts db = new AmazonProducts();
         //create
-        //[Compress]
+        [Compress]
         [HttpPost]
         public async Task AddProduct([Bind(Include = "prod_name,rating,thumbanil,price,shipping_fee,stocks,brand,description,features,series,model_number,weight,product_dimen,item_dimen,Id")] Product product)
         {
@@ -25,7 +27,18 @@ namespace AmazonRest.Controllers
         //read
         [Compress]
         [HttpGet]
-        public JsonResult AllProducts() => Json(db.Products.ToList(), JsonRequestBehavior.AllowGet);
+        public JsonResult AllProducts()
+        {
+            var response = Json(db.Products.ToList(), JsonRequestBehavior.AllowGet);
+
+            if (GetValue("AllProducts") == null)
+            {
+                Add("AllProducts", response, DateTimeOffset.UtcNow.AddHours(24));
+                return GetValue("AllProducts") as JsonResult;
+            }
+            else
+                return GetValue("AllProducts") as JsonResult;
+        }
 
         [Compress]
         [HttpPost]
