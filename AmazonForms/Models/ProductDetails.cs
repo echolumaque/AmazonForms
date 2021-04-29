@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Prism.Commands;
 
 namespace AmazonForms.Models
 {
@@ -8,19 +9,19 @@ namespace AmazonForms.Models
         public int Id { get; set; }
 
         [JsonProperty("prod_name")]
-        public string ProdName { get; set; }
+        public string Prod_Name { get; set; }
 
         [JsonProperty("rating")]
         public int Rating { get; set; }
 
         [JsonProperty("thumbanil")]
-        public string Thumbnail { get; set; }
+        public string Thumbanil { get; set; }
 
         [JsonProperty("price")]
         public double Price { get; set; }
 
         [JsonProperty("shipping_fee")]
-        public double ShippingFee { get; set; }
+        public double Shipping_Fee { get; set; }
 
         [JsonProperty("stocks")]
         public int Stocks { get; set; }
@@ -44,9 +45,11 @@ namespace AmazonForms.Models
         public string Weight { get; set; }
 
         [JsonProperty("product_dimen")]
-        public string ProductDimen { get; set; }
+        public string Product_Dimen { get; set; }
 
         [JsonProperty("item_dimen")]
-        public string ItemDimen { get; set; }
+        public string Item_Dimen { get; set; }
+
+        public DelegateCommand<int?> GotoProductDetailPage { get; set; }
     }
 }

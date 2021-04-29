@@ -3,9 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              x:Class="AmazonForms.App">
-  <Application.Resources>
+    <Application.Resources>
+        
+        <Style x:Key="RegularLabel" TargetType="Label">
+            <Setter Property="FontFamily" Value="Regular"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
 
-    <!-- Application resource dictionary -->
+        <Style x:Key="BoldLabel" TargetType="Label">
+            <Setter Property="FontFamily" Value="Bold"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
 
-  </Application.Resources>
+        <Style x:Key="MatReg" TargetType="Label">
+            <Setter Property="FontFamily" Value="mat"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style x:Key="Mato" TargetType="Label">
+            <Setter Property="FontFamily" Value="mato"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+        
+        
+    </Application.Resources>
 </prism:PrismApplication>

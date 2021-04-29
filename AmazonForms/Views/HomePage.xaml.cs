@@ -1,9 +1,10 @@
-﻿
+﻿using Xamarin.Forms;
+
 namespace AmazonForms.Views
 {
-    public partial class MainPage
+    public partial class HomePage : ContentPage
     {
-        public MainPage()
+        public HomePage()
         {
             InitializeComponent();
         }
