@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using AmazonForms.Helpers.API;
 using AmazonForms.Models;
@@ -50,12 +51,12 @@ namespace AmazonForms.ViewModels
 
         public async Task<UserModel> UserLogin(string emailOrPhone, string password) => await amazon.UserLogin(emailOrPhone, password);
 
-        public void EditUser(int id, string name, string address) => amazon.EditUser(id, name, address);
+        //public void EditUser(int id, string name, string address) => amazon.EditUser(id, name, address);
 
         public async Task<ObservableCollection<UsersCarts>> GetCurrentUserCart(int id) => await amazon.GetCurrentUserCart(id);
 
-        public Task<ProductDetails> GetProductDetails(int productId) => amazon.GetProductDetails(productId);
+        public Task<ProductDetails> GetProductDetails(int? productId) => amazon.GetProductDetails(productId);
 
-        public Task<AllProducts> GetAllProducts() => amazon.GetAllProducts();
+        public Task<IEnumerable<ProductDetails>> GetAllProducts() => amazon.GetAllProducts();
     }
 }

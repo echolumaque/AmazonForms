@@ -6,6 +6,11 @@ using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
 
+[assembly:ExportFont("MaterialIconsOutlined-Regular.otf", Alias = "mato")]
+[assembly: ExportFont("MaterialIcons-Regular.ttf", Alias = "mat")]
+[assembly: ExportFont("Roboto-Bold.ttf", Alias = "Bold")]
+[assembly: ExportFont("Roboto-Regular.ttf", Alias = "Regular")]
+
 namespace AmazonForms
 {
     public partial class App
@@ -19,15 +24,16 @@ namespace AmazonForms
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/HomePage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
-
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+
+            containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
+            containerRegistry.RegisterForNavigation<ProductDetailPage, ProductDetailPageViewModel>();
         }
     }
 }
