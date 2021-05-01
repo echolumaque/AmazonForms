@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using AmazonRest.Helpers;
 using AmazonRest.Models;
 
 namespace AmazonRest.Controllers
@@ -36,6 +37,7 @@ namespace AmazonRest.Controllers
         }
 
         [HttpGet]
+        [Compress]
         [Route("products/all")]
         public async Task<List<Product>> ReturnAllProducts()
         {
