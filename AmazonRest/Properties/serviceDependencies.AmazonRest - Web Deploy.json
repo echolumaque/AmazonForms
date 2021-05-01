@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "mssql1": {
-      "type": "mssql.azure",
-      "connectionId": "AmazonDatabaseEntities",
-      "secretStore": "AzureAppSettings"
-    }
-  }
-}

@@ -1,51 +1,59 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Mvc;
-using AmazonRest.Helpers;
+using System.Web.Http;
 using AmazonRest.Models;
 
 namespace AmazonRest.Controllers
 {
-    public class ProductsController : BaseController
+    public class ProductsController : ApiController
     {
-        //used for crud internally
+        private ProductsEntities db = new ProductsEntities();
 
-        private readonly AmazonProducts db = new AmazonProducts();
-        //create
-        [Compress]
         [HttpPost]
-        public async Task AddProduct([Bind(Include = "prod_name,rating,thumbanil,price,shipping_fee,stocks,brand,description,features,series,model_number,weight,product_dimen,item_dimen,Id")] Product product)
+        [Route("products/add")]
+        public async Task<HttpResponseMessage> AddProduct([System.Web.Mvc.Bind(Include = "prod_name,rating,thumbanil,price,shipping_fee,stocks,brand,description,features,series,model_number,weight,product_dimen,item_dimen,Id")] Product product)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Products.Add(product);
-                await db.SaveChangesAsync();
+                using (var products = new ProductsEntities())
+                {
+                    products.Products.Add(product);
+                    await products.SaveChangesAsync();
+
+                    var message = Request.CreateResponse(HttpStatusCode.Created, products);
+                    message.Headers.Location = new Uri(Request.RequestUri + product.Id.ToString());
+                    return message;
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
 
-        //read
-        [Compress]
         [HttpGet]
-        public JsonResult AllProducts()
+        [Route("products/all")]
+        public async Task<List<Product>> ReturnAllProducts()
         {
-            var response = Json(db.Products.ToList(), JsonRequestBehavior.AllowGet);
-
-            if (GetValue("AllProducts") == null)
+            using (var products = new ProductsEntities())
             {
-                Add("AllProducts", response, DateTimeOffset.UtcNow.AddHours(24));
-                return GetValue("AllProducts") as JsonResult;
+                return await products.Products.ToListAsync();
             }
-            else
-                return GetValue("AllProducts") as JsonResult;
         }
 
-        [Compress]
-        [HttpPost]
-        public async Task DeleteProduct(int? id)
+        [HttpDelete]
+        [Route("products/delete")]
+        public async Task DeleteProduct(int productId)
         {
-            db.Products.Remove(db.Products.Find(id));
-            await db.SaveChangesAsync();
+            using (var products = new ProductsEntities())
+            {
+                products.Products.Remove(await products.Products.FindAsync(productId));
+                await products.SaveChangesAsync();
+            }
         }
     }
 }
