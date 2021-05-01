@@ -1,43 +1,70 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using System.Web.Http;
 using AmazonRest.Helpers;
 using AmazonRest.Models;
 
 namespace AmazonRest.Controllers
 {
-    public class UsersController : BaseController
+    public class UsersController : ApiController
     {
-        private readonly AmazonUsers users = new AmazonUsers();
-
         [HttpPost]
         [Route("users/register")]
-        public async Task<string> Register([Bind(Include = "Id, Name, Password, EmailOrPhone")] User user)
+        public async Task<HttpResponseMessage> Register([System.Web.Mvc.Bind(Include = "Id, Name, Password, EmailOrPhone")] User user)
         {
-            var encryptedCredentials = new User
-            { 
-                Name = user.Name,
-                Password = EncryptDecrypt.EncryptPassword(user.Password),
-                EmailOrPhone = user.EmailOrPhone
-            };
-
-
-            if (ModelState.IsValid)
+            try
             {
-                users.Users.Add(encryptedCredentials);
-                await users.SaveChangesAsync();
+                using (var users = new UsersEntities())
+                {
+                    var encryptedUser = new User
+                    {
+                        EmailOrPhone = user.EmailOrPhone,
+                        Name = user.Name,
+                        Password = Encrypt.EncryptPassword(user.Password)
+                    };
+
+                    users.Users.Add(encryptedUser);
+                    await users.SaveChangesAsync();
+
+                    var message = Request.CreateResponse(HttpStatusCode.Created, encryptedUser);
+                    message.Headers.Location = new Uri(Request.RequestUri + user.Id.ToString());
+                    return message;
+                }
             }
-            return "registered";
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
 
         [HttpPost]
-        public JsonResult Login([Bind(Include = "EmailOrPhone, Password")] User user)
+        [Route("users/login")]
+        public AuthenticateUser_Result Login([System.Web.Mvc.Bind(Include = "EmailOrPhone, Password")] User user)
         {
-            var userInfo = users.AuthenticateUser(user.EmailOrPhone, EncryptDecrypt.EncryptPassword(user.Password)).FirstOrDefault();
-            return Json(userInfo, JsonRequestBehavior.AllowGet);
+            try
+            {
+                using (var users = new UsersEntities())
+                {
+                    return users.AuthenticateUser(user.EmailOrPhone, Encrypt.EncryptPassword(user.Password)).FirstOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+                throw new UserNotExistException($"User {user.EmailOrPhone} cannot be found on the database.");
+            }
         }
 
-        [HttpPost]
-        public void EditUser(int? id, string name, string address) => users.EditCurrentUser(id, name, address);
+        [HttpPut]
+        [Route("users/edit")]
+        public void Edit(int? id, string name, string address)
+        {
+            using (var users = new UsersEntities())
+            {
+                users.EditCurrentUser(id, name, address);
+            }
+        }
     }
 }
