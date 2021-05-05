@@ -16,7 +16,7 @@ namespace AmazonRest.Controllers
 
         [HttpPost]
         [Route("products/add")]
-        public async Task<HttpResponseMessage> AddProduct([System.Web.Mvc.Bind(Include = "prod_name,rating,thumbanil,price,shipping_fee,stocks,brand,description,features,series,model_number,weight,product_dimen,item_dimen,Id")] Product product)
+        public async Task<HttpResponseMessage> AddProduct([FromBody]Product product)
         {
             try
             {
@@ -37,24 +37,40 @@ namespace AmazonRest.Controllers
         }
 
         [HttpGet]
-        [Compress]
         [Route("products/all")]
-        public async Task<List<Product>> ReturnAllProducts()
+        public async Task<HttpResponseMessage> ReturnAllProducts()
         {
             using (var products = new ProductsEntities())
             {
-                return await products.Products.ToListAsync();
+                return Request.CreateResponse(HttpStatusCode.OK, await products.Products.ToListAsync());
             }
         }
 
         [HttpDelete]
         [Route("products/delete")]
-        public async Task DeleteProduct(int productId)
+        public async Task<HttpResponseMessage> DeleteProduct(int productId)
         {
-            using (var products = new ProductsEntities())
+            try
             {
-                products.Products.Remove(await products.Products.FindAsync(productId));
-                await products.SaveChangesAsync();
+                using (var products = new ProductsEntities())
+                {
+                    var entity = await products.Products.FindAsync(productId);
+
+                    if (entity == null)
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"Product with id {productId} is not found on the database.");
+                    }
+                    else
+                    {
+                        products.Products.Remove(entity);
+                        await products.SaveChangesAsync();
+                        return Request.CreateResponse(HttpStatusCode.OK);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
             }
         }
     }

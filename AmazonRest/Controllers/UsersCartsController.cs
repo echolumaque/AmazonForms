@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.Core.Objects;
+﻿using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using AmazonRest.Helpers;
 using AmazonRest.Models;
@@ -10,13 +11,11 @@ namespace AmazonRest.Controllers
         private readonly UsersCartsEntities userCart = new UsersCartsEntities();
 
         [HttpGet]
-        [Compress]
         [Route("userscarts/cart")]
-        public ObjectResult<QueryUsersCarts_Result> GetCurrentUserCart(int? id) => userCart.QueryUsersCarts(id);
+        public HttpResponseMessage GetCurrentUserCart(int? id) => Request.CreateResponse(HttpStatusCode.OK, userCart.QueryUsersCarts(id));
 
         [HttpGet]
-        [Compress]
         [Route("userscarts/productdetails")]
-        public ObjectResult<ShowProductDetails_Result> GetProductDetails(int? productId) =>  userCart.ShowProductDetails(productId);
+        public HttpResponseMessage GetProductDetails(int? productId) =>  Request.CreateResponse(HttpStatusCode.OK, userCart.ShowProductDetails(productId));
     }
 }
