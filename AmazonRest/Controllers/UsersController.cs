@@ -13,7 +13,7 @@ namespace AmazonRest.Controllers
     {
         [HttpPost]
         [Route("users/register")]
-        public async Task<HttpResponseMessage> Register([System.Web.Mvc.Bind(Include = "Id, Name, Password, EmailOrPhone")] User user)
+        public async Task<HttpResponseMessage> Register([FromBody] User user)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace AmazonRest.Controllers
 
         [HttpPost]
         [Route("users/login")]
-        public AuthenticateUser_Result Login([System.Web.Mvc.Bind(Include = "EmailOrPhone, Password")] User user)
+        public AuthenticateUser_Result Login([FromBody] User user)
         {
             try
             {
@@ -59,11 +59,27 @@ namespace AmazonRest.Controllers
 
         [HttpPut]
         [Route("users/edit")]
-        public void Edit(int? id, string name, string address)
+        public async Task<HttpResponseMessage> Edit([FromBody] int? id, string name, string address)
         {
-            using (var users = new UsersEntities())
+            try
             {
-                users.EditCurrentUser(id, name, address);
+                using (var users = new UsersEntities())
+                {
+                    if (users.Users.FindAsync(id) == null)
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"User {name} does not exist on the database.");
+                    }
+                    else
+                    {
+                        users.EditCurrentUser(id, name, address);
+                        await users.SaveChangesAsync();
+                        return Request.CreateResponse(HttpStatusCode.OK);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
     }

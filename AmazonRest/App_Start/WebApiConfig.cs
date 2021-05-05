@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using AmazonRest.Helpers;
 using Newtonsoft.Json.Serialization;
 
 namespace AmazonRest
@@ -23,6 +24,9 @@ namespace AmazonRest
 
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            config.Filters.Add(new CompressAttribute());
+            config.Filters.Add(new ForceHTTPSAttribute());
         }
     }
 }
