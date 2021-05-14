@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonCMS", "AmazonCMS\Amaz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonRest", "AmazonRest\AmazonRest.csproj", "{F3CD3445-DF09-469C-85FE-22E5D74CAFF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonRestOAuth", "AmazonRestOAuth\AmazonRestOAuth.csproj", "{14267089-0367-4858-A20C-E8EA8D9E00F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{F3CD3445-DF09-469C-85FE-22E5D74CAFF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3CD3445-DF09-469C-85FE-22E5D74CAFF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3CD3445-DF09-469C-85FE-22E5D74CAFF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14267089-0367-4858-A20C-E8EA8D9E00F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14267089-0367-4858-A20C-E8EA8D9E00F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14267089-0367-4858-A20C-E8EA8D9E00F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14267089-0367-4858-A20C-E8EA8D9E00F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
